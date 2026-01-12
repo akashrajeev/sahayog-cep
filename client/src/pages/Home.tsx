@@ -21,7 +21,6 @@ const Home = () => {
   const [sosOpen, setSosOpen] = useState(false);
   const [nearestHospital, setNearestHospital] = useState(hospitals[0]);
 
-  // Combine system alerts with reported incidents
   const allAlerts = [
     ...alerts,
     ...incidents.map((incident) => ({
@@ -35,7 +34,6 @@ const Home = () => {
   ];
 
   const handleSOS = () => {
-    // Simulate getting user location and finding nearest hospital
     const nearest = hospitals.sort((a, b) => (a.distance || 0) - (b.distance || 0))[0];
     setNearestHospital(nearest);
     setSosOpen(true);
@@ -46,12 +44,22 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative py-16 px-4 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10">
         <div className="container mx-auto text-center">
+
+          {/* 🔥 SEO CRITICAL STATIC TEXT */}
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            {t('home.title')}
+            IDRMS – Integrated Disaster Management System (Sahayog)
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8">
+
+          <p className="text-lg md:text-xl text-muted-foreground mb-6">
+            Sahayog is a real-time disaster alert, emergency response, and relief coordination platform
+            designed to support citizens and authorities during disasters.
+          </p>
+
+          {/* Translated subtitle can stay */}
+          <p className="text-md text-muted-foreground mb-8">
             {t('home.subtitle')}
           </p>
+
           <Button
             size="lg"
             onClick={handleSOS}
@@ -108,7 +116,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Active Alerts */}
+        {/* Alerts */}
         <section>
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-foreground">
@@ -125,6 +133,12 @@ const Home = () => {
           </div>
         </section>
       </div>
+
+      {/* Hidden SEO reinforcement */}
+      <p className="sr-only">
+        IDRMS (Integrated Disaster Management System) by Sahayog is a disaster management
+        and emergency response platform in India.
+      </p>
 
       {/* SOS Dialog */}
       <Dialog open={sosOpen} onOpenChange={setSosOpen}>
